@@ -29,9 +29,11 @@ public class User implements Serializable{
 	private String mobileNumber;
 	@Column(name="email")
 	private String email;
+	@Column(name="role",nullable=false)
+	private String role;
 	
 	public User(Integer id, String firstName, String lastName, String username, String password, Byte[] profilePic,
-			Address address, String mobileNumber, String email) {
+			Address address, String mobileNumber, String email,String role) {
 		super();
 		this.id = id;
 		this.firstName = firstName;
@@ -42,10 +44,11 @@ public class User implements Serializable{
 		this.address = address;
 		this.mobileNumber = mobileNumber;
 		this.email = email;
+		this.role = role;
 	}
 
 	public User(String firstName, String lastName, String username, String password, Byte[] profilePic, Address address,
-			String mobileNumber, String email) {
+			String mobileNumber, String email, String role) {
 		super();
 		this.firstName = firstName;
 		this.lastName = lastName;
@@ -55,6 +58,7 @@ public class User implements Serializable{
 		this.address = address;
 		this.mobileNumber = mobileNumber;
 		this.email = email;
+		this.role = role;
 	}
 
 	public User() {
@@ -131,6 +135,14 @@ public class User implements Serializable{
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+
+	public String getRole() {
+		return role;
+	}
+
+	public void setRole(String role) {
+		this.role = role;
 	}
 	
 }
