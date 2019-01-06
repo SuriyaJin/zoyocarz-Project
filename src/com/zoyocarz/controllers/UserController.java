@@ -11,4 +11,9 @@ public class UserController {
 	public String index() {
 		return "user/index";
 	}
+	
+	@RequestMapping("signUp")
+	public String signUp() {
+		return "/user/signUp";
+	}
 }
