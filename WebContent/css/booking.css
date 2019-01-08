@@ -1,0 +1,21 @@
+.transparent{
+  background:rgba(202, 207, 210,0.5);
+  background-image:none;
+  border-color:transparent;
+  box-shadow:none;
+  height:10%;
+}
+.btn-inverse-success {
+	background:transparent;
+  	background-image:none;
+  	border:2px solid #5cb85c;
+  	color:#5cb85c;
+  	font-weight:bolder;
+}
+.btn-inverse-warning {
+	background:transparent;
+  	background-image:none;
+  	border:2px solid #f0ad4e;
+  	color:#f0ad4e;
+  	font-weight:bolder;
+}

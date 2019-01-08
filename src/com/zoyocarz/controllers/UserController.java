@@ -26,7 +26,7 @@ public class UserController {
 		if(valid) {
 			return new ModelAndView("booking/search");
 		} else {
-			return new ModelAndView("user/index","error","Invalid Username or password.");
+			return new ModelAndView("booking/index","error","Invalid Username or password.");
 		}
 	}
 	

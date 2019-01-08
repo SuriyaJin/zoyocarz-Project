@@ -15,8 +15,8 @@ public class Vehicle implements Serializable{
 	private Integer id;
 	@Column(name="name")
 	private String name;
-	@Column(name="price_per_hour")
-	private Double pricePerOur;
+	@Column(name="price_per_km")
+	private Double pricePerKm;
 	@Lob
 	@Column(name="image",nullable=false,columnDefinition="longblob")
 	private Byte[] image;
@@ -25,21 +25,23 @@ public class Vehicle implements Serializable{
 	@Column(name="vehicle_no")
 	private String vehicleNo;
 	
-	public Vehicle(Integer id, String name, Double pricePerOur, Byte[] image, District district) {
+	public Vehicle(Integer id, String name, Double pricePerKm, Byte[] image, District district, String vehicleNo) {
 		super();
 		this.id = id;
 		this.name = name;
-		this.pricePerOur = pricePerOur;
+		this.pricePerKm = pricePerKm;
 		this.image = image;
 		this.district = district;
+		this.vehicleNo = vehicleNo;
 	}
 
-	public Vehicle(String name, Double pricePerOur, Byte[] image, District district) {
+	public Vehicle(String name, Double pricePerKm, Byte[] image, District district, String vehicleNo) {
 		super();
 		this.name = name;
-		this.pricePerOur = pricePerOur;
+		this.pricePerKm = pricePerKm;
 		this.image = image;
 		this.district = district;
+		this.vehicleNo = vehicleNo;
 	}
 
 	public Vehicle() {
@@ -62,12 +64,12 @@ public class Vehicle implements Serializable{
 		this.name = name;
 	}
 
-	public Double getPricePerOur() {
-		return pricePerOur;
+	public Double getPricePerKm() {
+		return pricePerKm;
 	}
 
-	public void setPricePerOur(Double pricePerOur) {
-		this.pricePerOur = pricePerOur;
+	public void setPricePerKm(Double pricePerKm) {
+		this.pricePerKm = pricePerKm;
 	}
 
 	public Byte[] getImage() {
@@ -84,6 +86,14 @@ public class Vehicle implements Serializable{
 
 	public void setDistrict(District district) {
 		this.district = district;
+	}
+
+	public String getVehicleNo() {
+		return vehicleNo;
+	}
+
+	public void setVehicleNo(String vehicleNo) {
+		this.vehicleNo = vehicleNo;
 	}
 	
 }

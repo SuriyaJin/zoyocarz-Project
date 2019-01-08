@@ -1,10 +1,10 @@
-function loadPage(url) {
+function loadPage(url,div,modal) {
 	$.ajax({
 		url: url,
 		cache: true,
 		success:function(html) {
-			$("#signUpDiv").html(html);
-			$("#signUpModal").modal("show");
+			$("#"+div).html(html);
+			$("#"+modal).modal("show");
 		}
 	});
 }

@@ -53,4 +53,10 @@
   	<bean name="userService" class="com.zoyocarz.services.UserService">
   		<property name="sessionFactory" ref="sessionFactory"/>
   	</bean>
+  	<bean name="vehicleService" class="com.zoyocarz.services.VehicleService">
+  		<property name="sessionFactory" ref="sessionFactory"/>
+  	</bean>
+  	<bean name="locationService" class="com.zoyocarz.services.LocationService">
+  		<property name="sessionFactory" ref="sessionFactory"/>
+  	</bean>
 </beans>
