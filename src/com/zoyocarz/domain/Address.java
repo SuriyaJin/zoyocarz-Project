@@ -18,27 +18,23 @@ public class Address implements Serializable{
 	private String city;
 	@Column(name="state")
 	private String state;
-	@Column(name="country")
-	private String country;
 	@Column(name="pincode")
 	private String pincode;
 	
-	public Address(Integer id, String street, String city, String state, String country, String pincode) {
+	public Address(Integer id, String street, String city, String state, String pincode) {
 		super();
 		this.id = id;
 		this.street = street;
 		this.city = city;
 		this.state = state;
-		this.country = country;
 		this.pincode = pincode;
 	}
 
-	public Address(String street, String city, String state, String country, String pincode) {
+	public Address(String street, String city, String state,String pincode) {
 		super();
 		this.street = street;
 		this.city = city;
 		this.state = state;
-		this.country = country;
 		this.pincode = pincode;
 	}
 
@@ -76,14 +72,6 @@ public class Address implements Serializable{
 
 	public void setState(String state) {
 		this.state = state;
-	}
-
-	public String getCountry() {
-		return country;
-	}
-
-	public void setCountry(String country) {
-		this.country = country;
 	}
 
 	public String getPincode() {

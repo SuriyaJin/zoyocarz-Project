@@ -50,4 +50,7 @@
 	<bean class="org.springframework.orm.hibernate3.HibernateTransactionManager" id="hibernateTransactionManager">
  		<property name="sessionFactory" ref="sessionFactory"></property>
   	</bean>
+  	<bean name="userService" class="com.zoyocarz.services.UserService">
+  		<property name="sessionFactory" ref="sessionFactory"/>
+  	</bean>
 </beans>

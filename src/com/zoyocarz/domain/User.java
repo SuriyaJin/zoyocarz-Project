@@ -16,8 +16,6 @@ public class User implements Serializable{
 	private String firstName;
 	@Column(name="last_name")
 	private String lastName;
-	@Column(name="username")
-	private String username;
 	@Column(name="password")
 	private String password;
 	@Lob
@@ -32,13 +30,12 @@ public class User implements Serializable{
 	@Column(name="role",nullable=false)
 	private String role;
 	
-	public User(Integer id, String firstName, String lastName, String username, String password, Byte[] profilePic,
+	public User(Integer id, String firstName, String lastName,String password, Byte[] profilePic,
 			Address address, String mobileNumber, String email,String role) {
 		super();
 		this.id = id;
 		this.firstName = firstName;
 		this.lastName = lastName;
-		this.username = username;
 		this.password = password;
 		this.profilePic = profilePic;
 		this.address = address;
@@ -47,12 +44,11 @@ public class User implements Serializable{
 		this.role = role;
 	}
 
-	public User(String firstName, String lastName, String username, String password, Byte[] profilePic, Address address,
+	public User(String firstName, String lastName, String password, Byte[] profilePic, Address address,
 			String mobileNumber, String email, String role) {
 		super();
 		this.firstName = firstName;
 		this.lastName = lastName;
-		this.username = username;
 		this.password = password;
 		this.profilePic = profilePic;
 		this.address = address;
@@ -87,14 +83,6 @@ public class User implements Serializable{
 
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
-	}
-
-	public String getUsername() {
-		return username;
-	}
-
-	public void setUsername(String username) {
-		this.username = username;
 	}
 
 	public String getPassword() {
