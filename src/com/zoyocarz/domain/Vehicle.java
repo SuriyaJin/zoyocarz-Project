@@ -19,13 +19,13 @@ public class Vehicle implements Serializable{
 	private Double pricePerKm;
 	@Lob
 	@Column(name="image",nullable=false,columnDefinition="longblob")
-	private Byte[] image;
+	private byte[] image;
 	@OneToOne(cascade=CascadeType.ALL)
 	private District district;
 	@Column(name="vehicle_no")
 	private String vehicleNo;
 	
-	public Vehicle(Integer id, String name, Double pricePerKm, Byte[] image, District district, String vehicleNo) {
+	public Vehicle(Integer id, String name, Double pricePerKm, byte[] image, District district, String vehicleNo) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -35,7 +35,7 @@ public class Vehicle implements Serializable{
 		this.vehicleNo = vehicleNo;
 	}
 
-	public Vehicle(String name, Double pricePerKm, Byte[] image, District district, String vehicleNo) {
+	public Vehicle(String name, Double pricePerKm, byte[] image, District district, String vehicleNo) {
 		super();
 		this.name = name;
 		this.pricePerKm = pricePerKm;
@@ -72,11 +72,11 @@ public class Vehicle implements Serializable{
 		this.pricePerKm = pricePerKm;
 	}
 
-	public Byte[] getImage() {
+	public byte[] getImage() {
 		return image;
 	}
 
-	public void setImage(Byte[] image) {
+	public void setImage(byte[] image) {
 		this.image = image;
 	}
 

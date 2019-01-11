@@ -66,3 +66,8 @@ function validateForm() {
 		$("#signUpForm").submit();
 	}
 }
+
+function logout(action) {
+	$("#logoutForm").attr("action",action);
+	$("#logoutForm").submit();
+}

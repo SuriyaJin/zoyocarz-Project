@@ -19,6 +19,14 @@ public class District implements Serializable{
 	@JoinColumn(name="state_id",nullable=false)
 	private State state;
 	
+	
+	public District(Integer id, String name, State state) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.state = state;
+	}
+
 	public District(String name, State state) {
 		super();
 		this.name = name;
@@ -44,5 +52,12 @@ public class District implements Serializable{
 	public void setState(State state) {
 		this.state = state;
 	}
-	
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
 }

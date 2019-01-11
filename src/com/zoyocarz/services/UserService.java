@@ -45,18 +45,18 @@ public class UserService {
 	}
 	
 	@SuppressWarnings("unchecked")
-	public Boolean login(String username, String password) {
-		Boolean valid = false;
+	public User login(String username, String password) {
+		User userIns = null;
 		Session session = sessionFactory.openSession();
 		Transaction tx = session.beginTransaction();
 		List<User> userList = session.createCriteria(User.class).add(Restrictions.eq("email",username)).list();
 		if(userList.size() > 0) {
 			if(userList.get(0).getPassword().equals(password)) {
-				valid = true;
+				userIns = userList.get(0);
 			}
 		}
 		tx.commit();
 		session.close();
-		return valid;
+		return userIns;
 	}
 }

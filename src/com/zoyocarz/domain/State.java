@@ -1,6 +1,7 @@
 package com.zoyocarz.domain;
 
 import java.io.Serializable;
+import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.*;
@@ -17,7 +18,7 @@ public class State implements Serializable{
 	@Column(name="name")
 	private String name;
 	@OneToMany(mappedBy="state")
-	private Set<District> districts;
+	private Set<District> districts = new HashSet<District>();
 	
 	public State() {
 		super();

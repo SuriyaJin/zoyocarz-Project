@@ -57,21 +57,39 @@ public class LocationService {
 	
 	@SuppressWarnings("unchecked")
 	public District obtainDistrictByName(String name) {
+		District district = null;
 		Session session = sessionFactory.openSession();
 		Transaction tx = session.beginTransaction();
 		List<District> districtList = session.createCriteria(District.class).add(Restrictions.eq("name", name)).list();
 		tx.commit();
 		session.close();
-		return districtList.get(0);
+		if(districtList.size() > 0) {
+			district = districtList.get(0);
+		}
+		return district;
 	}
 	
 	@SuppressWarnings("unchecked")
 	public State obtainStateByName(String name) {
+		State state = null;
 		Session session = sessionFactory.openSession();
 		Transaction tx = session.beginTransaction();
 		List<State> stateList = session.createCriteria(State.class).add(Restrictions.eq("name", name)).list();
 		tx.commit();
 		session.close();
-		return stateList.get(0);
+		if(stateList.size() > 0) {
+			state = stateList.get(0);
+		}
+		return state;
+	}
+	
+	@SuppressWarnings("unchecked")
+	public List<District> obtainAllDistricts() {
+		Session session = sessionFactory.openSession();
+		Transaction tx = session.beginTransaction();
+		List<District> districtList = session.createCriteria(District.class).list();
+		tx.commit();
+		session.close();
+		return districtList;
 	}
 }

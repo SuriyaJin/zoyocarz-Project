@@ -19,3 +19,12 @@
   	color:#f0ad4e;
   	font-weight:bolder;
 }
+.btn-inverse-info {
+	background:transparent;
+  	background-image:none;
+  	border:2px solid #31B0D5;
+  	color:#31B0D5;
+  	font-weight:bolder;
+  	border-radius: 0px;
+  	margin-top:9%;
+}
