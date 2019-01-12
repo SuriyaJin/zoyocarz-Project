@@ -26,9 +26,9 @@ public class LocationService {
 	}
 	
 	public void saveState(String stateName, String districtName) {
+		State stateIns = obtainStateByName(stateName);
 		Session session = sessionFactory.openSession();
 		Transaction tx = session.beginTransaction();
-		State stateIns = obtainStateByName(stateName);
 		if(stateIns == null) {
 			 stateIns = new State();
 			 stateIns.setName(stateName);
@@ -38,7 +38,6 @@ public class LocationService {
 		if(districtIns == null) {
 			districtIns = new District(districtName, stateIns);
 			session.save(districtIns);
-			stateIns.getDistricts().add(districtIns);
 			session.save(stateIns);
 		}
 		tx.commit();

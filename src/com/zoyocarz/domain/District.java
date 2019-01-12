@@ -15,8 +15,7 @@ public class District implements Serializable{
 	private Integer id;
 	@Column(name="name")
 	private String name;
-	@ManyToOne
-	@JoinColumn(name="state_id",nullable=false)
+	@OneToOne
 	private State state;
 	
 	

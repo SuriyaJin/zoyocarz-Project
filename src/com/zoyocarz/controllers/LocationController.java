@@ -1,5 +1,7 @@
 package com.zoyocarz.controllers;
 
+import java.util.HashMap;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,7 +24,10 @@ public class LocationController {
 	@RequestMapping("save")
 	public ModelAndView save(@RequestParam("state")String stateName,@RequestParam("district")String districtName) {
 		locationService.saveState(stateName, districtName);
-		return new ModelAndView("booking/index","message","Branch added successfully.");
+		HashMap<String,Object> modelMap = new HashMap<String,Object>();
+		modelMap.put("stateList",locationService.obtainAllStates());
+		modelMap.put("districtList", locationService.obtainAllDistricts());
+		return new ModelAndView("booking/index","modelMap",modelMap);
 	}
 
 }

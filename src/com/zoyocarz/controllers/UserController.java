@@ -1,5 +1,7 @@
 package com.zoyocarz.controllers;
 
+import java.util.HashMap;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +12,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.zoyocarz.domain.User;
 import com.zoyocarz.pojo.SessionEntity;
+import com.zoyocarz.services.LocationService;
 import com.zoyocarz.services.UserService;
 
 @Controller
@@ -19,6 +22,9 @@ public class UserController {
 	@Autowired
 	public UserService userService;
 	
+	@Autowired
+	public LocationService locationService;
+	
 	@RequestMapping("index")
 	public String index() {
 		return "user/index";
@@ -27,12 +33,15 @@ public class UserController {
 	@RequestMapping("login")
 	public ModelAndView login(@RequestParam()String username,@RequestParam("password")String password,HttpSession session) {
 		User userIns = null;
+		HashMap<String,Object> modelMap = new HashMap<String,Object>();
+		modelMap.put("stateList",locationService.obtainAllStates());
+		modelMap.put("districtList", locationService.obtainAllDistricts());
 		userIns = userService.login(username, password);
 		if(userIns != null) {
 			SessionEntity sessionEntity = new SessionEntity();
 			sessionEntity.setUserIns(userIns);
 			session.setAttribute("sessionEntity", sessionEntity);
-			return new ModelAndView("booking/index");
+			return new ModelAndView("booking/index","modelMap",modelMap);
 		} else {
 			return new ModelAndView("booking/index","message","Invalid Username or password.");
 		}
@@ -46,12 +55,18 @@ public class UserController {
 	@RequestMapping("createUser") 
 	public ModelAndView createUser(@RequestParam("firstName")String firstName,@RequestParam("lastName")String lastName,@RequestParam("password")String password,@RequestParam("mobileNumber")String mobileNumber,@RequestParam("email")String email,@RequestParam("street")String street,@RequestParam("city")String city,@RequestParam("state")String state,@RequestParam("pincode")String pincode){
 		userService.createUser(firstName, lastName, password, mobileNumber, email, street, city, state, pincode);
-		return new ModelAndView("booking/index","message","Signed Up!");
+		HashMap<String,Object> modelMap = new HashMap<String,Object>();
+		modelMap.put("stateList",locationService.obtainAllStates());
+		modelMap.put("districtList", locationService.obtainAllDistricts());
+		return new ModelAndView("booking/index","modelMap",modelMap);
 	}
 	
 	@RequestMapping("logout")
-	public String logout(HttpSession session) {
+	public ModelAndView logout(HttpSession session) {
 		session.invalidate();
-		return "booking/index";
+		HashMap<String,Object> modelMap = new HashMap<String,Object>();
+		modelMap.put("stateList",locationService.obtainAllStates());
+		modelMap.put("districtList", locationService.obtainAllDistricts());
+		return new ModelAndView("booking/index","modelMap",modelMap);
 	}
 }

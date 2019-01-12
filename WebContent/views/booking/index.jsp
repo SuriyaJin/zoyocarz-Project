@@ -30,22 +30,25 @@
 		     </font>
 		     <div style=" float:right;margin-right:-5%;margin-top:1%;width:45% ">
 		     	<%if(userIns != null && userIns.getRole().equalsIgnoreCase("admin")){ %>
-			     	<a style="cursor: pointer;color: #ffffff;font-weight: bolder;" onclick="loadPage('<%=request.getContextPath()%>/vehicle/create.do','modalDiv','vehicleModal')">
+			     	<a style="margin-left: 28%;cursor: pointer;color: #ffffff;font-weight: bolder;" onclick="loadPage('<%=request.getContextPath()%>/vehicle/create.do','modalDiv','vehicleModal')">
 		          		<span style="font-size:20px;"class="glyphicon glyphicon-plus"></span>&nbsp;Add Vehicle
 		       		</a>
 		        	<a style="margin-left:2%;cursor: pointer;color: #ffffff;font-weight: bolder;" onclick="loadPage('<%=request.getContextPath()%>/location/create.do','modalDiv','branchModal')">
 		          		<span style="font-size:20px;"class="glyphicon glyphicon-plus"></span>&nbsp;Add Branch
 		        	</a>
+		        	<button type="submit" class="btn btn-warning btn-inverse-warning" style="margin-left:2%;border-radius:0px; width: 23%;" onclick="logout('<%=request.getContextPath() %>/user/logout.do','logoutForm')">
+			          		Logout
+		       		</button>
 	        	<%} %>
 	        	<%if(sessionEntity == null){ %>
-		        	<button class="btn btn-warning btn-inverse-warning" style="margin-left:2%;border-radius:0px; width: 23%;" onclick="loadPage('<%=request.getContextPath() %>/user/index.do','modalDiv','loginModal')">
+		        	<button class="btn btn-warning btn-inverse-warning" style="margin-left:38%;border-radius:0px; width: 23%;" onclick="loadPage('<%=request.getContextPath() %>/user/index.do','modalDiv','loginModal')">
 		          		Login
 		       		</button>
 		        	<button class="btn btn-success btn-inverse-success" style="margin-left:2%;border-radius:0px; width: 23%;" onClick="loadPage('<%=request.getContextPath() %>/user/signUp.do','modalDiv','signUpModal')">
 		          		SignUp
 		        	</button>
-	        	<%} else{%>
-		        		<button type="submit" class="btn btn-warning btn-inverse-warning" style="margin-left:2%;border-radius:0px; width: 23%;" onclick="logout('<%=request.getContextPath() %>/user/logout.do','logoutForm')">
+	        	<%} else if(!userIns.getRole().equalsIgnoreCase("admin")){%>
+		        		<button type="submit" class="btn btn-warning btn-inverse-warning" style="margin-left:64%;border-radius:0px; width: 23%;" onclick="logout('<%=request.getContextPath() %>/user/logout.do','logoutForm')">
 			          		Logout
 			       		</button>
 		       	<%} %>	

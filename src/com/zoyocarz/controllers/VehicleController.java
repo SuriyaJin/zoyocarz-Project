@@ -1,6 +1,7 @@
 package com.zoyocarz.controllers;
 
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,6 +36,9 @@ public class VehicleController {
 	public ModelAndView save(@RequestParam("name")String name,@RequestParam("vehicleNo")String vehicleNo,@RequestParam("pricePerKm")Double pricePerKm,@RequestParam("districtId")Integer districtId,@RequestParam("vehicleImage")MultipartFile vehicleImage) throws IOException {
 		byte[] image = vehicleImage.getBytes();
 		vehicleService.saveVehicle(name, pricePerKm, image, districtId, vehicleNo);
-		return new ModelAndView("booking/index","message","Vehicle created successfully.");
+		HashMap<String,Object> modelMap = new HashMap<String,Object>();
+		modelMap.put("stateList",locationService.obtainAllStates());
+		modelMap.put("districtList", locationService.obtainAllDistricts());
+		return new ModelAndView("booking/index","modelMap",modelMap);
 	}
 }

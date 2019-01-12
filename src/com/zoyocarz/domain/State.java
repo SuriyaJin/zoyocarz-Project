@@ -1,8 +1,6 @@
 package com.zoyocarz.domain;
 
 import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
 
 import javax.persistence.*;
 
@@ -17,24 +15,20 @@ public class State implements Serializable{
 	private Integer id;
 	@Column(name="name")
 	private String name;
-	@OneToMany(mappedBy="state")
-	private Set<District> districts = new HashSet<District>();
 	
 	public State() {
 		super();
 	}
 
-	public State(String name,Set<District> districts) {
+	public State(String name) {
 		super();
 		this.name = name;
-		this.districts = districts;
 	}
 
-	public State(Integer id, String name,Set<District> districts) {
+	public State(Integer id, String name) {
 		super();
 		this.id = id;
 		this.name = name;
-		this.districts = districts;
 	}
 
 	public String getName() {
@@ -52,13 +46,4 @@ public class State implements Serializable{
 	public void setId(Integer id) {
 		this.id = id;
 	}
-
-	public Set<District> getDistricts() {
-		return districts;
-	}
-
-	public void setDistricts(Set<District> districts) {
-		this.districts = districts;
-	}
-	
 }
